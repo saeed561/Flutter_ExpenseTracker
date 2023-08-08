@@ -24,7 +24,8 @@ class ExpenseItem extends StatelessWidget {
                 Spacer(),
                 Row(
                   children: [
-                    Icon(Icons.alarm),
+                    Icon(categroryIcons[expense.category]),
+                    //Icon(Icons.flight_takeoff_outlined),
                     Text(
                       formater.format(expense.date),
                     ),
