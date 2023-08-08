@@ -22,7 +22,9 @@ class ExpenseItem extends StatelessWidget {
                 Row(
                   children: [
                     Icon(categroryIcons[expense.category]),
-                    //Icon(Icons.flight_takeoff_outlined),
+                    const SizedBox(
+                      width: 6,
+                    ),
                     Text(
                       expense.formattedDate,
                     ),
