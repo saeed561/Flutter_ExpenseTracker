@@ -1,8 +1,5 @@
 import 'package:basic_project/modal/Expense.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
-final formater = DateFormat.yMd();
 
 class ExpenseItem extends StatelessWidget {
   const ExpenseItem(this.expense, {super.key});
@@ -27,7 +24,7 @@ class ExpenseItem extends StatelessWidget {
                     Icon(categroryIcons[expense.category]),
                     //Icon(Icons.flight_takeoff_outlined),
                     Text(
-                      formater.format(expense.date),
+                      expense.formattedDate,
                     ),
                   ],
                 ),
