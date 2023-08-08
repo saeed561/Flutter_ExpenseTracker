@@ -33,11 +33,16 @@ class _ExpensesState extends State<Expenses> {
         date: DateTime.now(),
         category: Category.tafrih),
   ];
+  void _updateExpenseList(Expense newExpense) {
+    setState(() {
+      _myExpenses.add(newExpense);
+    });
+  }
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
       context: context,
-      builder: (ctx) => NewExpense(),
+      builder: (ctx) => NewExpense(onAddExpense: _updateExpenseList),
     );
   }
 

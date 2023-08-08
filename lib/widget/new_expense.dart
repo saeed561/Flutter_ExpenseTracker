@@ -1,8 +1,9 @@
 import 'package:basic_project/modal/Expense.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/date_symbols.dart';
 
 class NewExpense extends StatefulWidget {
+  NewExpense({required this.onAddExpense, super.key});
+  void Function(Expense newExpense) onAddExpense;
   @override
   State<NewExpense> createState() {
     return _NewExpense();
@@ -32,6 +33,7 @@ class _NewExpense extends State<NewExpense> {
   }
 
   void submitExpenseData() {
+    Navigator.pop(context);
     final enteredAmount = double.tryParse(_amountControll.text);
     final isInvalidAmount = enteredAmount == null || enteredAmount <= 0;
     if (_titleController.text.trim().isEmpty || isInvalidAmount) {
@@ -52,6 +54,15 @@ class _NewExpense extends State<NewExpense> {
       );
       return;
     }
+    final newExpense = Expense(
+      title: _titleController.text,
+      amount: enteredAmount,
+      date: _selectedDate!,
+      category: _selectedCategor,
+    );
+
+    // Call the onAddExpense function using the widget property
+    widget.onAddExpense(newExpense);
   }
 
   @override
