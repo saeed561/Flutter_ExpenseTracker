@@ -24,15 +24,13 @@ void main() {
         ),
       ),
       textTheme: ThemeData().textTheme.copyWith(
-            titleLarge: TextStyle(fontSize: 14, color: KcolorScheme.primary),
+            titleLarge: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w900,
+              color: KcolorScheme.primary,
+            ),
           ),
-      // textTheme: ThemeData().textTheme.copyWith(
-      //       bodyLarge: TextStyle(fontSize: 72),
-      //       titleLarge: TextStyle(backgroundColor: Colors.red),
-      //       button: TextStyle(
-      //         fontSize: 341,
-      //       ),
-      //     ),
+
     ),
     home: Expenses(),
   ));
