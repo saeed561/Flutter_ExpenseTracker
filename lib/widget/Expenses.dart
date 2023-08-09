@@ -1,4 +1,5 @@
 import 'package:basic_project/widget/New_Expense.dart';
+import 'package:basic_project/widget/chart/chart.dart';
 import 'package:basic_project/widget/expenses_list/expenses_list.dart';
 import 'package:basic_project/modal/Expense.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +87,7 @@ class _ExpensesState extends State<Expenses> {
       ]),
       body: Column(
         children: [
-          const Text("The Chart"),
+          Chart(expenses: _myExpenses),
           Expanded(
             child: screenContent,
           ),
