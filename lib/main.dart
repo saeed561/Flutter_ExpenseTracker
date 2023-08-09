@@ -17,6 +17,12 @@ void main() {
         color: KcolorScheme.secondaryContainer,
         margin: EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: KcolorScheme.primaryContainer,
+          textStyle: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
     ),
     home: Expenses(),
   ));
