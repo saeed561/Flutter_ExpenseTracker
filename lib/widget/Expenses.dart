@@ -71,6 +71,8 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    var screenwidth = MediaQuery.of(context).size.width;
+    print(screenwidth);
     Widget screenContent = const Center(
       child: Text("No Expense exists create and Expense by adding one"),
     );
@@ -79,20 +81,30 @@ class _ExpensesState extends State<Expenses> {
           ExpensesList(expenses: _myExpenses, removeExpense: _removeExpense);
     }
     return Scaffold(
-      appBar: AppBar(title: const Text("my expense tracker"), actions: [
-        IconButton(
-          onPressed: _openAddExpenseOverlay,
-          icon: const Icon(Icons.add_circle_outline_rounded),
-        ),
-      ]),
-      body: Column(
-        children: [
-          Chart(expenses: _myExpenses),
-          Expanded(
-            child: screenContent,
+        appBar: AppBar(title: const Text("my expense tracker"), actions: [
+          IconButton(
+            onPressed: _openAddExpenseOverlay,
+            icon: const Icon(Icons.add_circle_outline_rounded),
           ),
-        ],
-      ),
-    );
+        ]),
+        body: screenwidth < 500
+            ? Column(
+                children: [
+                  Chart(expenses: _myExpenses),
+                  Expanded(
+                    child: screenContent,
+                  ),
+                ],
+              )
+            : Row(
+                children: [
+                  Expanded(
+                    child: Chart(expenses: _myExpenses),
+                  ),
+                  Expanded(
+                    child: screenContent,
+                  ),
+                ],
+              ));
   }
 }
