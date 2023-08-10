@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:basic_project/modal/Expense.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NewExpense extends StatefulWidget {
@@ -32,11 +35,22 @@ class _NewExpense extends State<NewExpense> {
     });
   }
 
-  void submitExpenseData() {
-    Navigator.pop(context);
-    final enteredAmount = double.tryParse(_amountControll.text);
-    final isInvalidAmount = enteredAmount == null || enteredAmount <= 0;
-    if (_titleController.text.trim().isEmpty || isInvalidAmount) {
+  void _showDialog() {
+    if (Platform.isIOS) {
+      showCupertinoDialog(
+        context: context,
+        builder: (ctx) => CupertinoAlertDialog(
+          title: Text("Invalid User Input"),
+          content: Text("Please Check if title and amount entered correctly"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text("Ok"),
+            ),
+          ],
+        ),
+      );
+    } else {
       showDialog(
         context: context,
         builder: (ctx) {
@@ -52,6 +66,28 @@ class _NewExpense extends State<NewExpense> {
           );
         },
       );
+    }
+  }
+
+  void submitExpenseData() {
+    Navigator.pop(context);
+    final enteredAmount = double.tryParse(_amountControll.text);
+    final isInvalidAmount = enteredAmount == null || enteredAmount <= 0;
+    if (_titleController.text.trim().isEmpty || isInvalidAmount) {
+      showCupertinoDialog(
+        context: context,
+        builder: (ctx) => CupertinoAlertDialog(
+          title: Text("Invalid User Input"),
+          content: Text("Please Check if title and amount entered correctly"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text("Ok"),
+            ),
+          ],
+        ),
+      );
+      _showDialog();
       return;
     }
     final newExpense = Expense(
