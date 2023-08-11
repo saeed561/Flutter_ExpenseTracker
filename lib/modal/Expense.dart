@@ -5,11 +5,11 @@ import 'package:intl/intl.dart';
 final uuid = Uuid();
 final formater = DateFormat.yMd();
 
-enum Category { food, travel, work, tafrih }
+enum Category { food, travel, work, hobby }
 
 final categroryIcons = {
   Category.food: Icons.food_bank,
-  Category.tafrih: Icons.movie,
+  Category.hobby: Icons.tv_rounded,
   Category.travel: Icons.flight_takeoff_outlined,
   Category.work: Icons.work_history,
 };

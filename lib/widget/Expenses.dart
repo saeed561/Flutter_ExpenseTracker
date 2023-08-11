@@ -14,13 +14,13 @@ class Expenses extends StatefulWidget {
 class _ExpensesState extends State<Expenses> {
   final List<Expense> _myExpenses = [
     Expense(
-        title: "Kebab",
+        title: "Pasta",
         amount: 260.8,
         date: DateTime.now(),
         category: Category.food),
     Expense(
         title: "Flutter",
-        amount: 15260.8,
+        amount: 1526.8,
         date: DateTime.now(),
         category: Category.work),
     Expense(
@@ -32,7 +32,25 @@ class _ExpensesState extends State<Expenses> {
         title: "Cinema",
         amount: 80.8,
         date: DateTime.now(),
-        category: Category.tafrih),
+        category: Category.hobby),
+    Expense(
+      title: 'Groceries',
+      amount: 50.25,
+      date: DateTime(2023, 8, 1),
+      category: Category.food,
+    ),
+    Expense(
+      title: 'Movie Tickets',
+      amount: 20.0,
+      date: DateTime(2023, 8, 5),
+      category: Category.hobby,
+    ),
+    Expense(
+      title: 'Gasoline',
+      amount: 35.75,
+      date: DateTime(2023, 8, 10),
+      category: Category.travel,
+    ),
   ];
   void _updateExpenseList(Expense newExpense) {
     setState(() {
@@ -51,7 +69,7 @@ class _ExpensesState extends State<Expenses> {
         content: const Text("Deleted Expense Successfly!"),
         duration: Duration(seconds: 3),
         action: SnackBarAction(
-            label: "Noo!,Get Back to your place in the list",
+            label: ",Undo?",
             onPressed: () {
               setState(() {
                 _myExpenses.insert(_indexOfDeleterExpense, expense);
@@ -74,7 +92,7 @@ class _ExpensesState extends State<Expenses> {
   Widget build(BuildContext context) {
     var screenwidth = MediaQuery.of(context).size.width;
     print(screenwidth);
-    
+
     Widget screenContent = const Center(
       child: Text("No Expense exists create and Expense by adding one"),
     );
